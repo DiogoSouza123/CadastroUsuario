@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 
-//null
+//biblioteca para criar layouts e acessa-las no codigo
 var handlebars = require('express-handlebars')
 
 
