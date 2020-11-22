@@ -59,9 +59,28 @@ const Post = require('./models/Post')
     })
 
     app.post('/efetuarlogin', function(req, res){
-
         //TODO
-        //criar metodo para validar login
+        const { login, senha } = req.body
+
+        if (!login || !senha) {
+            return res.status(400).send(
+              'Faltou dados'
+            );
+        }
+
+        Post.findAll({
+            where: {
+              usuario: login,
+              senha:senha
+            }
+        }).then(function(data){
+            console.log(data)
+            if(data.length===0){
+                res.render('erro')
+            }else{
+                res.render('sucesso')
+            }
+        })
 
     })
 
