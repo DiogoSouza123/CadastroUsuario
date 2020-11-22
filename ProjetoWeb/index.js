@@ -43,7 +43,14 @@ const Post = require('./models/Post')
         
     })
 
-    app.get('/login', function(req, res){
+    app.get('/editar/:id', function(req, res){
+        Post.findByPk(req.params.id).then(function(usuario){
+            console.log(usuario)
+            res.render('editarusuario', {usuario: usuario})
+        })
+    })
+
+    app.get('/', function(req, res){
         res.render('login')
     })
 
@@ -73,6 +80,18 @@ const Post = require('./models/Post')
 
 
     })
+
+    app.post('/editarusuario', function(req, res){
+        Post.update(
+            {usuario: req.body.login}, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function(){
+            res.render('sucesso')
+        })
+    })
+
 
     app.get('/deletar/:id', function(req, res){
         Post.destroy({where: {id: req.params.id}}).then(function(){
