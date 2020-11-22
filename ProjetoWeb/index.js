@@ -1,24 +1,24 @@
-//bilbioteca criar para servidor
-const express = require('express')
-const app = express()
+//IMPORTAÇÕES 
+    //bilbioteca criar para servidor
+    const express = require('express')
+    const app = express()
 
-//biblioteca para criar layouts e acessa-las no codigo
-var handlebars = require('express-handlebars')
+    //biblioteca para criar layouts e acessa-las no codigo
+    var handlebars = require('express-handlebars')
 
+    const bodyParser = require('body-parser')
 
-//null 
-const bodyParser = require('body-parser')
+    //biblioteca para realizar conexão com o bd
+    const Sequelize = require("sequelize")
 
-//biblioteca para realizar conexão com o bd
-const Sequelize = require("sequelize")
-
-//classe para conectar no banco de dados e fazer o crud com o bd
-const Post = require('./models/Post')
-
-
+    //classe para conectar no banco de dados e fazer o crud com o bd
+    const Post = require('./models/Post')
+//--------------------------------------------------------
 
 
-//Config
+
+
+//Configs
     //Templete engine (handlebars)
     app.engine('handlebars', handlebars({defaultLayout: 'main'}))
     app.set('view engine', 'handlebars')
@@ -27,14 +27,24 @@ const Post = require('./models/Post')
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
 
+    app.use(express.static('public'))
     //conexão com o bd
     /*const sequelize = new Sequelize('sistemadiogo', 'root', 'admin', {
         host:"localhost",
         dialect: 'mysql'
     })*/
+//--------------------------------------------------------
+
+
 
 
 //Rotas
+
+    //login
+    app.get('/', function(req, res){
+        res.render('login')
+    })
+
     app.get('/listarusuarios', function(req,res){
         //funcao que retorna todos dados do bd
         Post.findAll().then(function(data){
@@ -48,10 +58,6 @@ const Post = require('./models/Post')
             console.log(usuario)
             res.render('editarusuario', {usuario: usuario})
         })
-    })
-
-    app.get('/', function(req, res){
-        res.render('login')
     })
 
     app.get('/criarusuario', function(req, res){

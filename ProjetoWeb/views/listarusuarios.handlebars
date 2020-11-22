@@ -1,12 +1,10 @@
 <h1>Lista de Usuarios</h1>
 
 {{#each data}}
-    <h1>
-    <p>{{dataValues.id}}</p>
-    <p>{{dataValues.usuario}}</p>
-    <p>{{dataValues.senha}}</p>
+    <p>ID:{{dataValues.id}}</p>
+    <p>Usuario:{{dataValues.usuario}}</p>
+    <p>Senha:{{dataValues.senha}}</p>
     <a href="/deletar/{{dataValues.id}}"><button>Deletar</button></a>
     <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
-    </h1>
     <hr>
 {{/each}}

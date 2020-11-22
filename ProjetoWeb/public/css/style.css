@@ -1,0 +1,16 @@
+body{
+    padding: 20px;
+}
+
+h1{
+    color: blue;
+    font-size: 25px;
+}
+
+p{
+    font-size: 20px;
+}
+
+#login {
+    text-align: center;
+}

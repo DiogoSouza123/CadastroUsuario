@@ -14,5 +14,5 @@ const Post = db.sequelize.define('usuario',{
 
 module.exports = Post
 
-//comentado para nao executar arquivo por engano
+//comentado para nao executar arquivo por engano e recriar tabela
 //Post.sync({force: true})
