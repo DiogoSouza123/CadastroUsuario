@@ -10,6 +10,8 @@ const Post = db.sequelize.define('usuario',{
     }
 })
 
+
+
 module.exports = Post
 
 //comentado para nao executar arquivo por engano
