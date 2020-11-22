@@ -108,7 +108,8 @@
 
     app.post('/editarusuario', function(req, res){
         Post.update(
-            {usuario: req.body.login}, {
+            {usuario: req.body.login,
+            senha:req.body.senha}, {
             where: {
                 id: req.body.id
             }
