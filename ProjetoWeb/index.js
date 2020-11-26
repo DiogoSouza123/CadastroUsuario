@@ -55,7 +55,7 @@
 
     app.get('/editar/:id', function(req, res){
         Post.findByPk(req.params.id).then(function(usuario){
-            console.log(usuario)
+            //console.log(usuario)
             res.render('editarusuario', {usuario: usuario})
         })
     })
@@ -65,7 +65,6 @@
     })
 
     app.post('/efetuarlogin', function(req, res){
-        //TODO
         const { login, senha } = req.body
 
         if (!login || !senha) {
